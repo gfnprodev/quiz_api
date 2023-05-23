@@ -28,5 +28,5 @@ async def add_new_questions(questions_num: QuestionNumSchema, holder: HolderDAO 
         db_questions = await holder.question.add_questions(questions)
 
     result_question = await holder.question.get_last_question()
-
+    await holder.commit()
     return QuestionDefaultSchema.from_orm(result_question)
